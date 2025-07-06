@@ -1,0 +1,33 @@
+{
+  "originHash" : "5fd34a6dc5a27ebe4bc13b3503ee6a6ab782b72423c4083ab50ce07fa55c28b3",
+  "pins" : [
+    {
+      "identity" : "factory?tab=readme-ov-file",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hmlongco/Factory?tab=readme-ov-file",
+      "state" : {
+        "revision" : "ccc898f21992ebc130bc04cc197460a5ae230bcf",
+        "version" : "2.5.3"
+      }
+    },
+    {
+      "identity" : "swift-argument-parser",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-argument-parser.git",
+      "state" : {
+        "revision" : "011f0c765fb46d9cac61bca19be0527e99c98c8b",
+        "version" : "1.5.1"
+      }
+    },
+    {
+      "identity" : "tomldecoder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dduan/TOMLDecoder",
+      "state" : {
+        "revision" : "018127977b7f67e4d60938ca69db2c56ff265109",
+        "version" : "0.3.1"
+      }
+    }
+  ],
+  "version" : 3
+}
