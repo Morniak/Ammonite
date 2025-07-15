@@ -63,7 +63,7 @@ private extension ConfigManager {
     
     func loadOrCreateConfigIfNeeded() {
         let homePath = FileManager.default.homeDirectoryForCurrentUser.path
-        let path1 = "\(homePath)/.\(Constants.appName.lowercased())-config.toml"
+        let path1 = "\(homePath)/.\(Constants.appName.lowercased()).toml"
         let path2 = "\(homePath)/.config/\(Constants.appName.lowercased())/config.toml"
         var chosenPath: String?
         
