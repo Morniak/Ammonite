@@ -22,7 +22,7 @@ struct MenuView: View {
                 WorkspacesWidgetView(isMenu: true)
             case .currentAerospaceMode:
                 AerospaceModeListWidgetView(isMenu: true)
-            case .storageSmall where AmmoniteContainer.shared.storageDevicesMonitor().devices.count > 0:
+            case .storage where AmmoniteContainer.shared.storageDevicesMonitor().devices.count > 0:
                 StoragesWidgetView()
             default:
                 EmptyView()

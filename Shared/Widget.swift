@@ -20,7 +20,7 @@ enum Widget: String, Codable, CaseIterable, Equatable {
     case keyboardLayout = "keyboard-layout"
     case workspaceNext = "workspace-next"
     case workspacePrev = "workspace-prev"
-    case storageSmall = "storage-small"
+    case storage = "storage"
 
     // TODO: - Add aerospaceLayout once aerospace have a layout callback
 
@@ -52,7 +52,7 @@ extension Widget {
         .keyboardLayout,
         .workspaceNext,
         .workspacePrev,
-        .storageSmall
+        .storage
     ]
     
     static var barWidgets: [Widget] = Self.allCases.filter { $0 != .none }
@@ -62,6 +62,6 @@ extension Widget {
     }
     
     var isStorage: Bool {
-        self == .storageSmall
+        self == .storage
     }
 }

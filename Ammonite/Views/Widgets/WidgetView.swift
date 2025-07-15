@@ -50,7 +50,7 @@ struct WidgetView: View {
             WorkspaceSwitcherWidgetView(isSwitchNext: true)
         case .workspacePrev:
             WorkspaceSwitcherWidgetView(isSwitchNext: false)
-        case .storageSmall:
+        case .storage:
             StorageSmallWidgetView()
         }
     }

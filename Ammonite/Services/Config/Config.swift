@@ -40,7 +40,7 @@ extension Config {
             return workspaces.workspaces.count > 1
         case .currentAerospaceMode:
             return aerospace.modesWidget.modes.count > 1
-        case .storageSmall:
+        case .storage:
             return true
         case .digitalClock,
              .analogClock,
