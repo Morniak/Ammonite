@@ -18,8 +18,8 @@ class AerospaceModesInteractor {
     private var cancellable: AnyCancellable?
     
     init(config: Config) {
-        let modes = config.aerospace.modes
-        let currentModeIndex = modes.firstIndex(of: config.aerospace.currentMode)
+        let modes = config.aerospace.modesWidget.modes
+        let currentModeIndex = modes.firstIndex(of: config.aerospace.modesWidget.current)
         let state = AerospaceModesState(modes: modes, current: currentModeIndex)
         
         self.modesSubject = .init(state)

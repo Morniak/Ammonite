@@ -58,20 +58,21 @@ let defaultAmmoniteConfig = """
     # [workspaces.aliases]
     #   1 = "web"
 
-[aerospace]
-    modes = \(toTOMLArray(AerospaceConfig.default.modes))
-    # Options: \(ItemListStyle.allCases.map(\.rawValue).joined(separator: ", "))
-    menu_style = "\(AerospaceConfig.default.menuStyle.rawValue)"
-    show_separators_in_menu = \(AerospaceConfig.default.showSeparatorsInMenu)
+# If you installed Aerospace without Homebrew,
+# you can manually set the path to the binary:
+#
+# aerospace.path = "/usr/local/bin/aerospace"
 
-    # If you installed Aerospace without Homebrew,
-    # you can manually set the path to the binary:
-    #
-    # path = "/usr/local/bin/aerospace"
+# Configuration for the widgets that show Aerospace binding modes:
+[aerospace.modesWidget]
+    modes = \(toTOMLArray(AerospaceConfig.default.modesWidget.modes))
+    # Options: \(ItemListStyle.allCases.map(\.rawValue).joined(separator: ", "))
+    menu_style = "\(AerospaceConfig.default.modesWidget.menuStyle.rawValue)"
+    show_separators_in_menu = \(AerospaceConfig.default.modesWidget.showSeparatorsInMenu)
 
 # Assign SF Symbols to each Aerospace mode for the '\(Widget.currentAerospaceMode)' widget
-[aerospace.modeIcons]
-    main = "\(AerospaceConfig.default.modeIcons["main"]!)"
+[aerospace.modesWidget.icons]
+    main = "\(AerospaceConfig.default.modesWidget.icons["main"]!)"
 """
 
 private func toTOMLArray(_ array: [String]) -> String {

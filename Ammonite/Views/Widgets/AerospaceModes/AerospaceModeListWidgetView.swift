@@ -15,18 +15,18 @@ struct AerospaceModeListWidgetView: View {
 
     let isMenu: Bool
     
-    var aerospaceConfig: AerospaceConfig {
-        configManager.config.aerospace
+    var config: AerospaceModesWidgetConfig {
+        configManager.config.aerospace.modesWidget
     }
     
     var showSeparators: Bool {
-        (aerospaceConfig.showSeparatorsInMenu && isMenu) || (aerospaceConfig.showSeparatorsInWidget && !isMenu)
+        (config.showSeparatorsInMenu && isMenu) || (config.showSeparatorsInWidget && !isMenu)
     }
 
     var body: some View {
         ItemListView(
             items: viewModel.modes,
-            style: isMenu ? aerospaceConfig.menuStyle : aerospaceConfig.widgetStyle,
+            style: isMenu ? config.menuStyle : config.widgetStyle,
             showSeparators: showSeparators,
             isSelected: viewModel.isModeSelected(_:),
             action: viewModel.switchMode(_:)

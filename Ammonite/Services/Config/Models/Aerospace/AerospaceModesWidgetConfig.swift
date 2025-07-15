@@ -1,45 +1,31 @@
 //
-//  AerospaceConfig.swift
+//  AerospaceModeWidgetConfig.swift
 //  Ammonite
 //
-//  Created by Guillaume Clédat on 24/06/2025.
+//  Created by Guillaume Clédat on 15/07/2025.
 //
 
-import Foundation
-
-struct AerospaceConfig: Equatable {
-    
-    var path: String = Self.defaultAerospacePath
-    var currentMode: String = "main"
+struct AerospaceModesWidgetConfig: Equatable {
+    var current: String = "main"
     var modes: [String] = ["main"]
-    var modeIcons: [String: String] = ["main":"circle"]
+    var icons: [String: String] = ["main":"circle"]
     var menuStyle: ItemListStyle = .box
     var widgetStyle: ItemListStyle = .box
     var showSeparatorsInMenu: Bool = false
     var showSeparatorsInWidget: Bool = false
-    
-    static var defaultAerospacePath: String {
-        if FileManager.default.fileExists(atPath: "/opt/homebrew/bin/aerospace") {
-            "/opt/homebrew/bin/aerospace"
-        } else if FileManager.default.fileExists(atPath: "/usr/local/bin/aerospace") {
-            "/usr/local/bin/aerospace"
-        } else {
-            "/opt/homebrew/bin/aerospace"
-        }
-    }
-    
+
     static var `default` = Self.init()
 }
 
 // MARK: - Decoder
 
-extension AerospaceConfig: Decodable {
+extension AerospaceModesWidgetConfig: Decodable {
     
     private enum CodingKeys: CodingKey {
         case path
-        case currentMode
+        case current
         case modes
-        case modeIcons
+        case icons
         case menuStyle
         case widgetStyle
         case showSeparatorsInMenu
@@ -48,10 +34,9 @@ extension AerospaceConfig: Decodable {
     
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.path = try container.decodeIfPresent(String.self, forKey: CodingKeys.path) ?? Self.default.path
-        self.currentMode = try container.decodeIfPresent(String.self, forKey: CodingKeys.currentMode) ?? Self.default.currentMode
+        self.current = try container.decodeIfPresent(String.self, forKey: CodingKeys.current) ?? Self.default.current
         self.modes = try container.decodeIfPresent([String].self, forKey: CodingKeys.modes) ?? Self.default.modes
-        self.modeIcons = try container.decodeIfPresent([String: String].self, forKey: .modeIcons) ?? Self.default.modeIcons
+        self.icons = try container.decodeIfPresent([String: String].self, forKey: .icons) ?? Self.default.icons
         self.menuStyle = try container.decodeIfPresent(ItemListStyle.self, forKey: .menuStyle) ?? Self.default.menuStyle
         self.widgetStyle = try container.decodeIfPresent(ItemListStyle.self, forKey: .widgetStyle) ?? Self.default.widgetStyle
         self.showSeparatorsInMenu = try container.decodeIfPresent(Bool.self, forKey: .showSeparatorsInMenu) ?? Self.default.showSeparatorsInMenu

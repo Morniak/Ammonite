@@ -39,7 +39,7 @@ extension Config {
         case .currentWorkspaceIndex, .currentWorkspaceLetter, .workspaceGrid:
             return workspaces.workspaces.count > 1
         case .currentAerospaceMode:
-            return aerospace.modes.count > 1
+            return aerospace.modesWidget.modes.count > 1
         case .storageSmall:
             return true
         case .digitalClock,

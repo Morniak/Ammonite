@@ -22,7 +22,7 @@ struct AerospaceModeWidgetView: View {
     }
     
     var body: some View {
-        if let systemImage = aerospaceConfig.modeIcons[viewModel.current] {
+        if let systemImage = aerospaceConfig.modesWidget.icons[viewModel.current] {
             Image(systemName: systemImage)
                 .contentTransition(.symbolEffect(.replace, options: .speed(2)))
                 .foregroundStyle(appearance.primaryColor)
