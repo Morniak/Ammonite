@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Factory
 
 struct MenuView: View {
     
@@ -21,7 +22,7 @@ struct MenuView: View {
                 WorkspacesWidgetView(isMenu: true)
             case .currentAerospaceMode:
                 AerospaceModeListWidgetView(isMenu: true)
-            case .storageSmall:
+            case .storageSmall where AmmoniteContainer.shared.storageDevicesMonitor().devices.count > 0:
                 StoragesWidgetView()
             default:
                 EmptyView()
