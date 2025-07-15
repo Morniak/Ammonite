@@ -42,12 +42,12 @@ let defaultAmmoniteConfig = """
     # workspaces = ["1", "2", ...]
     # current = "1"
 
-    menu_display.title_style = "\(WorkspacesConfig.default.menuDisplay.titleStyle)" # \(toTOMLArray(WorkspaceTitleStyle.allCases.map(\.rawValue)))
-    menu_display.decoration_style = "\(WorkspacesConfig.default.menuDisplay.decorationStyle)" # \(toTOMLArray(ItemListStyle.allCases.map(\.rawValue)))
+    menu_display.title_style = "\(WorkspacesConfig.default.menuDisplay.titleStyle)"\t# \(toTOMLArray(WorkspaceTitleStyle.allCases.map(\.rawValue)))
+    menu_display.decoration_style = "\(WorkspacesConfig.default.menuDisplay.decorationStyle)"\t# \(toTOMLArray(ItemListStyle.allCases.map(\.rawValue)))
     menu_display.show_separators = \(WorkspacesConfig.default.menuDisplay.showSeparators)
 
-    widget_display.title_style = "\(WorkspacesConfig.default.widgetDisplay.titleStyle)" # \(toTOMLArray(WorkspaceTitleStyle.allCases.map(\.rawValue)))
-    widget_display.decoration_style = "\(WorkspacesConfig.default.widgetDisplay.decorationStyle)" # \(toTOMLArray(ItemListStyle.allCases.map(\.rawValue)))
+    widget_display.title_style = "\(WorkspacesConfig.default.widgetDisplay.titleStyle)"\t# \(toTOMLArray(WorkspaceTitleStyle.allCases.map(\.rawValue)))
+    widget_display.decoration_style = "\(WorkspacesConfig.default.widgetDisplay.decorationStyle)"\t# \(toTOMLArray(ItemListStyle.allCases.map(\.rawValue)))
     widget_display.show_separators = \(WorkspacesConfig.default.widgetDisplay.showSeparators)
 
     # Use aliases to override the display names of your tiling window manager’s workspaces.
@@ -66,8 +66,7 @@ let defaultAmmoniteConfig = """
 # Configuration for the widgets that show Aerospace binding modes:
 [aerospace.modesWidget]
     modes = \(toTOMLArray(AerospaceConfig.default.modesWidget.modes))
-    # Options: \(ItemListStyle.allCases.map(\.rawValue).joined(separator: ", "))
-    menu_style = "\(AerospaceConfig.default.modesWidget.menuStyle.rawValue)"
+    menu_style = "\(AerospaceConfig.default.modesWidget.menuStyle.rawValue)"\t#\(ItemListStyle.allCases.map(\.rawValue).joined(separator: ", "))
     show_separators_in_menu = \(AerospaceConfig.default.modesWidget.showSeparatorsInMenu)
 
 # Assign SF Symbols to each Aerospace mode for the '\(Widget.currentAerospaceMode)' widget
