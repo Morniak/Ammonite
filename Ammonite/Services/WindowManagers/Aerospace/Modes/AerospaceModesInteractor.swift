@@ -13,21 +13,26 @@ class AerospaceModesInteractor {
     
     @Injected(\AmmoniteContainer.commandListener) var commandListener
     @Injected(\AmmoniteContainer.aerospaceInteractor) var aerospaceInteractor
+    @Injected(\AmmoniteContainer.configManager) var configManager
     
-    private let modesSubject: CurrentValueSubject<AerospaceModesState, Never>
-    private var cancellable: AnyCancellable?
+    private let modesSubject = CurrentValueSubject<AerospaceModesState, Never>(.init(modes: []))
+    private var cancellables = Set<AnyCancellable>()
     
-    init(config: Config) {
-        let modes = config.aerospace.modesWidget.modes
-        let currentModeIndex = modes.firstIndex(of: config.aerospace.modesWidget.current)
-        let state = AerospaceModesState(modes: modes, current: currentModeIndex)
+    init() {
+        updateModes(from: configManager.config.aerospace.modesWidget)
         
-        self.modesSubject = .init(state)
+        self.commandListener.commandPublisher
+            .sink { [weak self] command in
+                guard case let .aerospaceMode(newMode) = command else { return }
+                self?.onModeChanged(newMode)
+            }
+            .store(in: &cancellables)
         
-        self.cancellable = self.commandListener.commandPublisher.sink { [weak self] command in
-            guard case let .aerospaceMode(newMode) = command else { return }
-            self?.onModeChanged(newMode)
-        }
+        self.configManager.$config
+            .map(\.aerospace.modesWidget)
+            .removeDuplicates()
+            .sink { [weak self] config in self?.updateModes(from: config) }
+            .store(in: &cancellables)
     }
     
     func onModeChanged(_ newMode: String) {
@@ -68,5 +73,17 @@ extension AerospaceModesInteractor: AerospaceModeSwitcher {
                 print(error)
             }
         }
+    }
+}
+
+// MARK: - Private methods
+
+private extension AerospaceModesInteractor {
+    func updateModes(from config: AerospaceModesWidgetConfig) {
+        let modes = config.modes
+        let currentModeIndex = modes.firstIndex(of: config.current)
+        let state = AerospaceModesState(modes: modes, current: currentModeIndex)
+        
+        modesSubject.send(state)
     }
 }

@@ -9,8 +9,8 @@ import Foundation
 
 struct WidgetsConfig: Equatable {
     var leftBar: [Widget] = []
-    var leftNotch: Widget? = nil
-    var rightNotch: Widget? = nil
+    var leftNotch: Widget? = .currentAerospaceMode
+    var rightNotch: Widget? = .currentWorkspaceIndex
     var rightBar: [Widget] = []
     
     var dateTime: DateTimeWidgetConfig? = nil
@@ -43,8 +43,12 @@ extension WidgetsConfig: Decodable {
         self.battery = try container.decodeIfPresent(BatteryWidgetConfig.self, forKey: .battery) ?? Self.default.battery
         self.storageDevices = try container.decodeIfPresent(StorageDevicesMonitorWidgetConfig.self, forKey: .storageDevices) ?? Self.default.storageDevices
         
-        if leftNotch?.isAllowedInNotch == false || rightNotch?.isAllowedInNotch == false {
-            print("Warning: Unsupported widget set in notch area.")
+        if let widget = leftNotch, widget.isAllowedInNotch == false {
+            print("Warning: Unsupported widget set in the left notch area: \(widget)")
+        }
+        
+        if let widget = rightNotch, widget.isAllowedInNotch == false {
+            print("Warning: Unsupported widget set in the right notch area: \(widget)")
         }
     }
     

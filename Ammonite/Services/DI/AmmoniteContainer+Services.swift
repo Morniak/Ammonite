@@ -20,7 +20,7 @@ extension AmmoniteContainer {
     // MARK: - Workspaces related services
     
     var aerospaceWorkspacesRepository: Factory<AerospaceWorkspacesRepository> {
-        self { AerospaceWorkspacesRepository(config: self.configManager().config) }.shared
+        self { AerospaceWorkspacesRepository() }.shared
     }
     
     var workspaceSwitcher: Factory<any WorkspaceSwitcher> {
@@ -34,7 +34,7 @@ extension AmmoniteContainer {
     // MARK: - Aerospace modes related services
     
     var aerospaceModesInteractor: Factory<AerospaceModesInteractor> {
-        self { AerospaceModesInteractor(config: self.configManager().config) }.shared
+        self { AerospaceModesInteractor() }.shared
     }
     
     var aerospaceModesRepository: Factory<any AerospaceModesRepository> {

@@ -29,7 +29,8 @@ struct WorkspaceGridWidgetView: View {
     }
     
     private var rows: Int {
-        Int(ceil(Double(count) / Double(columns)))
+        guard columns > 0 else { return 0 }
+        return Int(ceil(Double(count) / Double(columns)))
     }
     
     var body: some View {
