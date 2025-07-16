@@ -50,13 +50,13 @@ let defaultAmmoniteConfig = """
     widget_display.decoration_style = "\(WorkspacesConfig.default.widgetDisplay.decorationStyle)"\t# \(toTOMLArray(ItemListStyle.allCases.map(\.rawValue)))
     widget_display.show_separators = \(WorkspacesConfig.default.widgetDisplay.showSeparators)
 
-    # Use aliases to override the display names of your tiling window manager’s workspaces.
-    # This is especially useful with window managers like Aerospace, which sort workspaces alphabetically.
-    #
-    # Example: show workspace 1 as 'web' within \(Constants.appName)
-    #
-    # [workspaces.aliases]
-    #   1 = "web"
+# Use aliases to override the display names of your tiling window manager’s workspaces.
+# This is especially useful with window managers like Aerospace, which sort workspaces alphabetically.
+#
+# Example: show workspace 1 as 'web' within \(Constants.appName)
+#
+# [workspaces.aliases]
+#   1 = "web"
 
 # If you installed Aerospace without Homebrew,
 # you can manually set the path to the binary:

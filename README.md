@@ -104,13 +104,13 @@ On first launch, `~/ammonite.toml` file will be created:
     widget_display.decoration_style = "box"	# ["text", "box"]
     widget_display.show_separators = false
 
-    # Use aliases to override the display names of your tiling window manager’s workspaces.
-    # This is especially useful with window managers like Aerospace, which sort workspaces alphabetically.
-    #
-    # Example: show workspace 1 as 'web' within Ammonite
-    #
-    # [workspaces.aliases]
-    #   1 = "web"
+# Use aliases to override the display names of your tiling window manager’s workspaces.
+# This is especially useful with window managers like Aerospace, which sort workspaces alphabetically.
+#
+# Example: show workspace 1 as 'web' within Ammonite
+#
+# [workspaces.aliases]
+#   1 = "web"
 
 # If you installed Aerospace without Homebrew,
 # you can manually set the path to the binary:
