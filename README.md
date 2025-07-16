@@ -2,10 +2,8 @@
 
 *Notch widgets for the [Aerospace](https://github.com/nikitabobko/AeroSpace) tiling window manager.*
 
-![screenshot](./assets/fullscreen.png)  
 ![notch](./assets/notch.png) ![notch-menu](./assets/notch-menu.png) ![bar](./assets/bar.png)
-
----
+![screenshot](./assets/fullscreen.png)  
 
 ## Quick Start
 
