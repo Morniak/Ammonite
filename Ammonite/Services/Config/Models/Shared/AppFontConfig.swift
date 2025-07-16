@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct AppFontConfig {
+struct AppFontConfig: Equatable {
     private(set) var name: String?
     private(set) var size: CGFloat = 12
     

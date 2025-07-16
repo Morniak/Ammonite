@@ -11,11 +11,6 @@ import AppKit
 
 struct AppearanceConfig: Equatable {
     
-    // TODO: - true equatable
-    static func == (lhs: AppearanceConfig, rhs: AppearanceConfig) -> Bool {
-        true
-    }
-    
     var notchWidth: CGFloat = 184
     var notchHeight: CGFloat = 32
     var notchCornerRadius: CGFloat = 10
@@ -25,10 +20,18 @@ struct AppearanceConfig: Equatable {
     var itemsSpacing: CGFloat = 6
     var edgeCutoutEnabled: Bool = false
         
-    var primaryColor: AnyShapeStyle = .fromString(Self.defaultValue.primaryColor)
-    var secondaryColor: AnyShapeStyle = .fromString(Self.defaultValue.secondaryColor)
-    var barBackgroundColor: AnyShapeStyle = .fromString(Self.defaultValue.barBackgroundColor)
-    var menuBackgroundColor: AnyShapeStyle = .fromString(Self.defaultValue.menuBackgroundColor)
+    var _primaryColor: String = Self.defaultValue.primaryColor
+    var primaryColor: AnyShapeStyle { .fromString(_primaryColor) }
+
+    var _secondaryColor: String = Self.defaultValue.secondaryColor
+    var secondaryColor: AnyShapeStyle { .fromString(_secondaryColor) }
+    
+    var _barBackgroundColor: String = Self.defaultValue.barBackgroundColor
+    var barBackgroundColor: AnyShapeStyle { .fromString(_barBackgroundColor) }
+
+    var _menuBackgroundColor: String = Self.defaultValue.menuBackgroundColor
+    var menuBackgroundColor: AnyShapeStyle { .fromString(_menuBackgroundColor) }
+    
     var font: AppFontConfig = .default
 
     static let defaultValue = (
@@ -69,10 +72,10 @@ extension AppearanceConfig: Decodable {
         self.innerPadding = try container.decodeIfPresent(CGFloat.self, forKey: .innerPadding) ?? Self.default.innerPadding
         self.itemsSpacing = try container.decodeIfPresent(CGFloat.self, forKey: .itemsSpacing) ?? Self.default.itemsSpacing
         self.edgeCutoutEnabled = try container.decodeIfPresent(Bool.self, forKey: .edgeCutoutEnabled) ?? Self.default.edgeCutoutEnabled
-        self.primaryColor = AnyShapeStyle.fromString(try container.decodeIfPresent(String.self, forKey: AppearanceConfig.CodingKeys.primaryColor) ?? Self.defaultValue.primaryColor)
-        self.secondaryColor = AnyShapeStyle.fromString(try container.decodeIfPresent(String.self, forKey: AppearanceConfig.CodingKeys.secondaryColor) ?? Self.defaultValue.secondaryColor)
-        self.barBackgroundColor = AnyShapeStyle.fromString(try container.decodeIfPresent(String.self, forKey: AppearanceConfig.CodingKeys.barBackgroundColor) ?? Self.defaultValue.barBackgroundColor)
-        self.menuBackgroundColor = AnyShapeStyle.fromString(try container.decodeIfPresent(String.self, forKey: AppearanceConfig.CodingKeys.menuBackgroundColor) ?? Self.defaultValue.menuBackgroundColor)
+        self._primaryColor = try container.decodeIfPresent(String.self, forKey: .primaryColor) ?? Self.defaultValue.primaryColor
+        self._secondaryColor = try container.decodeIfPresent(String.self, forKey: .secondaryColor) ?? Self.defaultValue.secondaryColor
+        self._barBackgroundColor = try container.decodeIfPresent(String.self, forKey: .barBackgroundColor) ?? Self.defaultValue.barBackgroundColor
+        self._menuBackgroundColor = try container.decodeIfPresent(String.self, forKey: .menuBackgroundColor) ?? Self.defaultValue.menuBackgroundColor
         self.font = try container.decodeIfPresent(AppFontConfig.self, forKey: .font) ?? Self.default.font
     }
 }
