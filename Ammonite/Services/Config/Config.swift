@@ -33,7 +33,6 @@ extension Config {
         self.appearance = rawConfig?.appearance ?? def.appearance
     }
     
-    // TODO: - Move to viewmodel
     func canPresentMenu(for widget: Widget) -> Bool {
         switch widget {
         case .currentWorkspaceIndex, .currentWorkspaceLetter, .workspaceGrid:
