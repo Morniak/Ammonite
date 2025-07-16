@@ -9,10 +9,11 @@
 
 ## Quick Start
 
-> brew tap Morniak/ammonite
-> brew install ammonite-notch
-> open -a Ammonite
-
+```
+brew tap Morniak/ammonite 
+brew install ammonite-notch
+open -a Ammonite
+```
 Then, you might want to install the [Ammonite CLI](#cli).
 
 ---
