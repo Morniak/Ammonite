@@ -23,6 +23,8 @@ Then, you might want to install the [Ammonite CLI](#cli).
 If you’d like to start **Ammonite** automatically with Aerospace, add this to your `.aerospace.toml`:
 
 ```toml
+# aerospace.toml
+
 after-startup-command = [
   'exec-and-forget open -a Ammonite'
 ]
@@ -31,9 +33,26 @@ after-startup-command = [
 To keep Ammonite in sync when you switch workspaces, install the [Ammonite CLI](#cli) and add:
 
 ```toml
+# aerospace.toml
+
 exec-on-workspace-change = ['/bin/bash', '-c',
   'ammonite workspace-change $AEROSPACE_FOCUSED_WORKSPACE'
 ]
+```
+
+Since Aerospace does not provide a callback for changes to the binding mode, you need to manually call the [Ammonite CLI](#cli) for every shortcut that changes the binding mode.
+
+```toml
+# aerospace.toml
+
+[mode.main.binding]
+    alt-cmd-ctrl-enter = [
+        'mode layout',
+        'exec-and-forget ammonite aerospace-mode layout'
+    ]
+
+[mode.layout.binding]
+    esc = ['mode main', 'exec-and-forget ammonite aerospace-mode main']
 ```
 
 ---
@@ -186,4 +205,9 @@ Show a list of all Aerospace binding modes and switch between them.
 
 ## CLI
 
-*TBD*
+The command-line interface lets you interact with the main app easily. You can install it directly from the Ammonite status bar icon.  
+If you prefer to install it manually, the binary is located inside the Ammonite.app package under `Contents/Resources/`.  
+
+![Install the CLI](./assets/install-cli.png)
+
+Run `ammonite help` and `ammonite help <subcommand>` for a detailed help.
